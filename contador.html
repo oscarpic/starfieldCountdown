@@ -1,0 +1,33 @@
+<html>
+<head>
+  <title>Contador de tiempo</title>
+  <link rel="stylesheet" type="text/css" href="estilos.css">    
+</head>
+<script>
+function actualizarContador() {
+  var fechaActual = new Date();
+  var fechaLanzamiento = new Date("September 6, 2023 00:00:00");
+
+  var diferenciaTiempo = fechaLanzamiento - fechaActual;
+
+  var segundos = Math.floor((diferenciaTiempo / 1000) % 60);
+  var minutos = Math.floor((diferenciaTiempo / 1000 / 60) % 60);
+  var horas = Math.floor((diferenciaTiempo / (1000 * 60 * 60)) % 24);
+  var dias = Math.floor(diferenciaTiempo / (1000 * 60 * 60 * 24));
+
+  document.getElementById("dias").textContent = dias;
+  document.getElementById("horas").textContent = horas;
+  document.getElementById("minutos").textContent = minutos;
+  document.getElementById("segundos").textContent = segundos;
+}
+function init(){
+	// Llamar a la función para mostrar el contador inicialmente
+	actualizarContador(); 
+	// Actualizar el contador cada segundo
+	setInterval(actualizarContador, 1000);
+}
+</script>
+<body onload="init()">
+  <div class="contador" id="contador"> <span id="dias"></span> días, <span id="horas"></span> horas, <span id="minutos"></span> minutos, <span id="segundos"></span> segundos</div>
+</body>
+</html>
